@@ -1,0 +1,17 @@
+/* index.css - Specific styles for the main index layout, header, etc. */
+
+/* Example minimal Apple-like styling: big whitespace, crisp corners */
+#mainNavbar .navbar-brand {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+.navbar-nav .nav-link {
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+
+@media (max-width: 768px) {
+  .navbar-nav .nav-link {
+    margin-left: 0;
+  }
+}

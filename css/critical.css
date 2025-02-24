@@ -1,0 +1,26 @@
+/* Extract critical styles for above-the-fold content */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --nav-bg: #ffffff;
+  --card-bg: #f8f9fa;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif; /* Fallback until Poppins loads */
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.navbar {
+  background: var(--nav-bg);
+  padding: 0.5rem 2rem;
+  height: 60px;
+}
+
+#content {
+  margin-top: 70px;
+  padding-top: 1rem;
+} 

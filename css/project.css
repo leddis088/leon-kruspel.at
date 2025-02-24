@@ -1,0 +1,338 @@
+/* project.css - Additional or specialized styling for project cards or grids */
+
+/* Timeline and Project Styling */
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.year-section {
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.year-heading {
+    font-size: 2rem;
+    color: var(--bs-primary);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--bs-primary);
+    padding-bottom: 0.5rem;
+}
+
+.project-item {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.status-badge.ongoing {
+    background-color: #ffd700;
+    color: #000;
+}
+
+.status-badge.finished {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.tech-stack {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tech-badge {
+    background-color: var(--bs-primary);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.875rem;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 1rem;
+    color: var(--bs-primary);
+    text-decoration: none;
+    gap: 0.5rem;
+}
+
+.project-link:hover {
+    text-decoration: underline;
+}
+
+/* Dark theme adjustments */
+body.dark-theme .project-item {
+    background: var(--card-bg);
+}
+
+body.dark-theme .tech-badge {
+    background-color: #4a90e2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .project-item {
+        padding: 1.5rem;
+    }
+    
+    .tech-stack {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+/* Modal styling */
+.project-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    margin: 3% auto;
+    padding: 2.5rem;
+    width: 95%;
+    max-width: 1200px;
+    border-radius: 12px;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    right: 1.5rem;
+    top: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: var(--bs-primary);
+}
+
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: rgba(var(--bs-primary-rgb), 0.05);
+    border-radius: 12px;
+}
+
+.gallery-image-container {
+    position: relative;
+    background: #f0f0f0;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 200px;
+    background: #f5f5f5;
+}
+
+.gallery-image-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    background: #f0f0f0; /* Fallback color while loading */
+}
+
+.gallery-image.error {
+    object-fit: contain;
+    padding: 1rem;
+    background: #f8f8f8;
+}
+
+.image-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--bs-primary);
+    font-size: 2rem;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.image-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    padding: 1rem 0.5rem 0.5rem;
+    font-size: 0.9rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.gallery-image-container:hover .image-caption {
+    transform: translateY(0);
+}
+
+.project-details {
+    margin-top: 2rem;
+}
+
+.project-details h4 {
+    color: var(--bs-primary);
+    margin-bottom: 1rem;
+}
+
+.project-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(var(--bs-primary-rgb), 0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-item:hover::before {
+    opacity: 1;
+}
+
+/* Remove the previous 'Click for details' text */
+.project-item::after {
+    display: none;
+}
+
+.project-details ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.project-details ul li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(var(--bs-primary-rgb), 0.1);
+}
+
+.project-details ul li:last-child {
+    border-bottom: none;
+}
+
+/* Add fullscreen image view styling */
+.fullscreen-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fullscreen-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+.fullscreen-content img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+.close-fullscreen {
+    position: absolute;
+    top: -2rem;
+    right: -2rem;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+/* Touch feedback styles */
+.touch-active {
+    background-color: rgba(var(--bs-primary-rgb), 0.1);
+}
+
+@media (hover: none) {
+    .project-item::before {
+        display: none;
+    }
+
+    .gallery-image-container:active {
+        transform: scale(0.98);
+    }
+}
+
+/* iOS Safari fixes */
+@supports (-webkit-touch-callout: none) {
+    .modal-content {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Add these styles */
+.image-error {
+    opacity: 0.7;
+    filter: grayscale(100%);
+}
+
+/* Fallback for failed images */
+.gallery-image:not([src]), 
+.gallery-image[src=""], 
+.gallery-image.image-error {
+    position: relative;
+    min-height: 200px;
+    background: #f5f5f5;
+}

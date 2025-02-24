@@ -1,0 +1,79 @@
+/* Add this new file for compatibility-related styles */
+.browser-warning {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    padding: 1rem;
+    background: rgba(255, 243, 205, 0.95);
+    border-bottom: 1px solid #ffeeba;
+}
+
+.error-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.error-message {
+    background: rgba(220, 53, 69, 0.9);
+    color: white;
+    padding: 1rem;
+    margin: 0.5rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    animation: fadeIn 0.3s ease-in;
+}
+
+.error-message.fade-out {
+    animation: fadeOut 0.3s ease-out 4.7s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(20px); }
+}
+
+/* Progressive image loading */
+.progressive-image {
+    filter: blur(5px);
+    transition: filter 0.3s ease-out;
+}
+
+.progressive-image.loaded {
+    filter: blur(0);
+}
+
+/* Add these styles */
+.noscript-warning {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: #fff3cd;
+  text-align: center;
+  z-index: 9999;
+}
+
+.image-error {
+  opacity: 0.7;
+  background: #f8f9fa;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.image-error::before {
+  content: 'Image not available';
+  color: #6c757d;
+} 

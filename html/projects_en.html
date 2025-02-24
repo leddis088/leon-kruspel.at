@@ -1,0 +1,363 @@
+<div class="mt-4">
+  <h1>My Projects</h1>
+  <p class="lead mb-5">A chronological overview of my technical journey and achievements.</p>
+
+  <div class="timeline">
+    <!-- 2025 -->
+    <div class="year-section">
+      <h2 class="year-heading">2025</h2>
+      <div class="project-item" onclick="openProjectModal('ai-server')">
+        <h3>AI Server Integration</h3>
+        <span class="status-badge ongoing">Ongoing</span>
+        <p>Current integration of an AI server into the existing network to meet future IT requirements.</p>
+        <div class="tech-stack">
+          <span class="tech-badge">AI Server</span>
+          <span class="tech-badge">Server</span>
+          <span class="tech-badge">Network Infrastructure</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2024 -->
+    <div class="year-section">
+      <h2 class="year-heading">2024</h2>
+      <div class="project-item" onclick="openProjectModal('intranet')">
+        <h3>School Intranet Project</h3>
+        <span class="status-badge ongoing">Ongoing</span>
+        <p>Development of a school intranet exclusively accessible via VPN. The network includes a Proxmox cluster consisting of 2 nodes and another cluster of 8 nodes. Students receive VPN tokens to access services like NextCloud, Emby, Adguard, 3cx phone system, Minecraft server, and other internal services. An internal DNS server enables creation of custom domains.</p>
+        <div class="tech-stack">
+          <span class="tech-badge">VPN</span>
+          <span class="tech-badge">Proxmox</span>
+          <span class="tech-badge">DNS</span>
+          <span class="tech-badge">Network Infrastructure</span>
+        </div>
+      </div>
+
+      <div class="project-item" onclick="openProjectModal('esp-brake')">
+        <h3>ESP Emergency Brake</h3>
+        <span class="status-badge ongoing">Ongoing</span>
+        <p>I received a subway emergency brake from a friend, which I connected to an ESP32. When activated, an I2C display shows an alarm and sends notifications to mobile phones. The project is being expanded with another emergency brake with speaker and microphone to create an intercom from the server room to my room.</p>
+        <div class="tech-stack">
+          <span class="tech-badge">C++</span>
+          <span class="tech-badge">ESP32</span>
+          <span class="tech-badge">I2C Display</span>
+          <span class="tech-badge">Speaker</span>
+          <span class="tech-badge">Pushover</span>
+          <span class="tech-badge">Discord</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2023 -->
+    <div class="year-section">
+      <h2 class="year-heading">2023</h2>
+      <div class="project-item">
+        <h3>Eaton Power Infrastructure</h3>
+        <span class="status-badge finished">Completed</span>
+        <p>Complete reinstallation of power supply. A new fuse box was installed, containing a smart meter that measures our total consumption. New fuses and sockets (CEE blue) were also installed. Additionally, an Eaton 9PX 11kVA UPS was mounted in the rack.</p>
+        <div class="tech-stack">
+          <span class="tech-badge">Fuses</span>
+          <span class="tech-badge">UPS</span>
+          <span class="tech-badge">PDU</span>
+          <span class="tech-badge">Server</span>
+          <span class="tech-badge">Switch</span>
+        </div>
+      </div>
+
+      <div class="project-item" onclick="openProjectModal('rack')">
+        <h3>IBM Rack</h3>
+        <span class="status-badge finished">Completed</span>
+        <p>I purchased a 42U rack. It houses all our 16 servers and three switches.</p>
+        <div class="tech-stack">
+          <span class="tech-badge">Rack</span>
+          <span class="tech-badge">Server</span>
+          <span class="tech-badge">Switch</span>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <h3>pGK School Forum</h3>
+        <span class="status-badge finished">Completed</span>
+        <p>A platform developed for the school where teachers and students can communicate.</p>
+        <div class="tech-stack">
+          <span class="tech-badge">MySQL</span>
+          <span class="tech-badge">PHP</span>
+          <span class="tech-badge">CSS</span>
+          <span class="tech-badge">HTML</span>
+        </div>
+        <a href="https://github.com/leddis088/schulforum-schuelerportal-pGK" target="_blank" class="project-link">
+          <i class="fab fa-github"></i> View on GitHub
+        </a>
+      </div>
+    </div>
+
+    <!-- 2022 -->
+    <div class="year-section">
+      <h2 class="year-heading">2022</h2>
+      <div class="project-item">
+        <h3>Home Network Expansion</h3>
+        <span class="status-badge finished">Completed</span>
+        <p>Acquired additional 11 HP ProLiant servers, a Dell PowerEdge, and a Topspin IBM InfiniBand Switch.</p>
+        <div class="tech-stack">
+          <span class="tech-badge">Server</span>
+          <span class="tech-badge">Switch</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2021 -->
+    <div class="year-section">
+      <h2 class="year-heading">2021</h2>
+      <div class="project-item">
+        <h3>Home Network Infrastructure</h3>
+        <span class="status-badge finished">Completed</span>
+        <p>Complete home network setup, consisting of OPNSense, PFsense, FritzBox, 2x HP ProLiant and 1x Dell PowerEdge.</p>
+        <div class="tech-stack">
+          <span class="tech-badge">Switch</span>
+          <span class="tech-badge">Router</span>
+          <span class="tech-badge">Firewall</span>
+          <span class="tech-badge">WiFi 6</span>
+          <span class="tech-badge">Server</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2020 -->
+    <div class="year-section">
+      <h2 class="year-heading">2020</h2>
+      <div class="project-item">
+        <h3>Private Data Center</h3>
+        <span class="status-badge finished">Completed</span>
+        <p>Establishment of a private data center with a Dell PowerEdge R710 and an HP ProLiant DL380p Gen8, running Proxmox VE.</p>
+        <div class="tech-stack">
+          <span class="tech-badge">Dell PowerEdge R710</span>
+          <span class="tech-badge">HP ProLiant DL380p Gen8</span>
+          <span class="tech-badge">Proxmox VE</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2019 -->
+    <div class="year-section">
+      <h2 class="year-heading">2019</h2>
+      <div class="project-item">
+        <h3>Scratch Studio</h3>
+        <span class="status-badge finished">Completed</span>
+        <p>A Scratch studio with various projects, created in collaboration with a friend.</p>
+        <div class="tech-stack">
+          <span class="tech-badge">Scratch2</span>
+        </div>
+        <a href="https://scratch.mit.edu/studios/25858922" target="_blank" class="project-link">
+          <i class="fas fa-external-link-alt"></i> View Studio
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="esp-brake-modal" class="project-modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeProjectModal('esp-brake')">&times;</span>
+    <h2>ESP Emergency Brake</h2>
+    <span class="status-badge ongoing">Ongoing</span>
+    
+    <div class="project-gallery">
+      <div class="gallery-image-container">
+        <i class="fas fa-spinner fa-spin image-placeholder"></i>
+        <img src="img/AI_Server_fanSide.jpg" 
+             alt="Temporary Project Image" 
+             class="gallery-image loading"
+             onload="this.classList.remove('loading')"
+             onerror="this.src='img/placeholder.jpg'">
+        <div class="image-caption">Project Overview</div>
+      </div>
+    </div>
+
+    <div class="project-details">
+      <h4>Project Description</h4>
+      <p>I received a subway emergency brake from a friend, which I connected to an ESP32. When activated, an I2C display shows an alarm and sends notifications to mobile phones. The project is being expanded with another emergency brake with speaker and microphone to create an intercom from the server room to my room.</p>
+
+      <h4>Technical Details</h4>
+      <ul>
+        <li>ESP32 microcontroller with WiFi capabilities</li>
+        <li>I2C Display for status information</li>
+        <li>Push notifications via Pushover API</li>
+        <li>Discord integration for alerts</li>
+        <li>Custom 3D printed case</li>
+      </ul>
+
+      <h4>Future Plans</h4>
+      <ul>
+        <li>Adding speaker and microphone for intercom functionality</li>
+        <li>Implementing two-way communication</li>
+        <li>Creating a web interface for configuration</li>
+      </ul>
+
+      <div class="project-links">
+        <a href="https://github.com/leddis088/espnotbremse" target="_blank" class="project-link">
+          <i class="fab fa-github"></i> View Source Code
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="ai-server-modal" class="project-modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeProjectModal('ai-server')">&times;</span>
+    <h2>AI Server Integration</h2>
+    <span class="status-badge ongoing">Ongoing</span>
+    
+    <div class="project-gallery">
+      <div class="gallery-image-container">
+        <i class="fas fa-spinner fa-spin image-placeholder"></i>
+        <img src="img/AI_Server_fanSide.jpg" 
+             alt="AI Server Fan Side" 
+             class="gallery-image loading"
+             onload="this.classList.remove('loading')">
+        <div class="image-caption">AI Server Cooling System</div>
+      </div>
+      <div class="gallery-image-container">
+        <i class="fas fa-spinner fa-spin image-placeholder"></i>
+        <img src="img/AI_Server_top.jpg" 
+             alt="AI Server Top View" 
+             class="gallery-image loading"
+             onload="this.classList.remove('loading')">
+        <div class="image-caption">AI Server Internal Layout</div>
+      </div>
+    </div>
+
+    <div class="project-details">
+      <h4>Project Description</h4>
+      <p>Integration of a dedicated AI server into the existing network infrastructure to support future machine learning and AI workloads.</p>
+
+      <h4>Technical Specifications</h4>
+      <ul>
+        <li>High-performance GPU server for AI workloads</li>
+        <li>Network integration with existing infrastructure</li>
+        <li>Custom cooling solution</li>
+        <li>Power management and monitoring</li>
+      </ul>
+
+      <h4>Implementation Details</h4>
+      <ul>
+        <li>Server Hardware Setup</li>
+        <li>Network Configuration</li>
+        <li>Power Distribution</li>
+        <li>Monitoring System</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="intranet-modal" class="project-modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeProjectModal('intranet')">&times;</span>
+    <h2>School Intranet Project</h2>
+    <span class="status-badge ongoing">Ongoing</span>
+    
+    <div class="project-gallery">
+      <div class="gallery-image-container">
+        <i class="fas fa-spinner fa-spin image-placeholder"></i>
+        <img src="img/projects/intranet/proxmox-cluster.jpg" 
+             alt="Proxmox Cluster" 
+             class="gallery-image loading"
+             onload="this.classList.remove('loading')">
+        <div class="image-caption">Proxmox Cluster Overview</div>
+      </div>
+      <div class="gallery-image-container">
+        <i class="fas fa-spinner fa-spin image-placeholder"></i>
+        <img src="img/projects/intranet/network-setup.jpg" 
+             alt="Network Setup" 
+             class="gallery-image loading"
+             onload="this.classList.remove('loading')">
+        <div class="image-caption">VPN and Network Infrastructure</div>
+      </div>
+    </div>
+
+    <div class="project-details">
+      <h4>Project Description</h4>
+      <p>Comprehensive school intranet solution with VPN access and multiple services.</p>
+
+      <h4>Infrastructure Details</h4>
+      <ul>
+        <li>2-Node Proxmox Cluster for High Availability</li>
+        <li>8-Node Computing Cluster for Distributed Workloads</li>
+        <li>VPN Access Control System</li>
+        <li>Internal DNS Server for Custom Domains</li>
+      </ul>
+
+      <h4>Available Services</h4>
+      <ul>
+        <li>NextCloud for File Sharing and Collaboration</li>
+        <li>Emby Media Server</li>
+        <li>Adguard for Network-wide Ad Blocking</li>
+        <li>3cx Phone System</li>
+        <li>Minecraft Server for Educational Gaming</li>
+        <li>Custom Internal Services</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="rack-modal" class="project-modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeProjectModal('rack')">&times;</span>
+    <h2>IBM Rack Infrastructure</h2>
+    <span class="status-badge finished">Completed</span>
+    
+    <div class="project-gallery">
+      <div class="gallery-image-container">
+        <i class="fas fa-spinner fa-spin image-placeholder"></i>
+        <img src="img/Serverrack_front.jpg" 
+             alt="Server Rack Front" 
+             class="gallery-image loading"
+             onload="this.classList.remove('loading')">
+        <div class="image-caption">Server Rack Front View</div>
+      </div>
+      <div class="gallery-image-container">
+        <i class="fas fa-spinner fa-spin image-placeholder"></i>
+        <img src="img/Serverrack_back.jpg" 
+             alt="Server Rack Back" 
+             class="gallery-image loading"
+             onload="this.classList.remove('loading')">
+        <div class="image-caption">Server Rack Rear Access</div>
+      </div>
+      <div class="gallery-image-container">
+        <i class="fas fa-spinner fa-spin image-placeholder"></i>
+        <img src="img/Serverrack_left.jpg" 
+             alt="Server Rack Left Side" 
+             class="gallery-image loading"
+             onload="this.classList.remove('loading')">
+        <div class="image-caption">Left Side View</div>
+      </div>
+      <div class="gallery-image-container">
+        <i class="fas fa-spinner fa-spin image-placeholder"></i>
+        <img src="img/Serverrack_right.jpg" 
+             alt="Server Rack Right Side" 
+             class="gallery-image loading"
+             onload="this.classList.remove('loading')">
+        <div class="image-caption">Right Side View</div>
+      </div>
+    </div>
+
+    <div class="project-details">
+      <h4>Infrastructure Overview</h4>
+      <ul>
+        <li>42U Professional IBM Rack</li>
+        <li>16 High-Performance Servers</li>
+        <li>3 Enterprise-Grade Switches</li>
+        <li>Advanced Cooling System</li>
+        <li>Redundant Power Distribution</li>
+      </ul>
+
+      <h4>Server Configuration</h4>
+      <ul>
+        <li>Multiple HP ProLiant Servers</li>
+        <li>Dell PowerEdge Systems</li>
+        <li>Topspin IBM InfiniBand Switch</li>
+        <li>Redundant Network Connections</li>
+      </ul>
+    </div>
+  </div>
+</div>

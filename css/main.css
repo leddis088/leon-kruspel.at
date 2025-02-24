@@ -1,0 +1,108 @@
+/* main.css - Global styling, theming, transitions, etc. */
+
+/* Light Theme (default) */
+body.light-theme {
+  background-color: #ffffff;
+  color: #212529; /* bootstrap default text color */
+}
+
+/* Dark Theme */
+body.dark-theme {
+  background-color: #121212;
+  color: #fefefe;
+}
+
+/* Smooth transitions for color changes */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Navbar overrides for dark theme */
+body.dark-theme .navbar,
+body.dark-theme .navbar-expand-lg {
+  background-color: #1c1c1c !important;
+}
+body.dark-theme .navbar-light .navbar-nav .nav-link {
+  color: #fefefe !important;
+}
+
+/* Add these browser compatibility rules */
+:root {
+  --webkit-bg-color: var(--bg-color);
+  --moz-bg-color: var(--bg-color);
+  --ms-bg-color: var(--bg-color);
+}
+
+/* Cross-browser transitions */
+.fade-in {
+  -webkit-animation: fadeIn 0.3s ease;
+  -moz-animation: fadeIn 0.3s ease;
+  -o-animation: fadeIn 0.3s ease;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Mobile-first media queries */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .project-item {
+    padding: 1.5rem;
+  }
+
+  .tech-stack {
+    flex-wrap: wrap;
+  }
+
+  .tech-badge {
+    margin: 0.25rem;
+    font-size: 0.8rem;
+  }
+
+  .modal-content {
+    padding: 1.5rem;
+    margin: 1rem;
+    width: auto;
+  }
+
+  .project-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .cookie-notice {
+    padding: 1rem;
+  }
+
+  .cookie-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* Tablet adjustments */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .project-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .project-item:hover {
+    transform: none;
+  }
+
+  .image-caption {
+    transform: translateY(0);
+    background: rgba(0, 0, 0, 0.6);
+  }
+}

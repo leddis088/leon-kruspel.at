@@ -1,0 +1,14 @@
+{
+    "name": "Leon Kruspel",
+    "short_name": "LK",
+    "icons": [
+        {
+            "src": "/favicon/favicon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#4a90e2",
+    "background_color": "#ffffff",
+    "display": "standalone"
+} 

@@ -1,0 +1,263 @@
+<div class="mt-4">
+  <h1>About Me</h1>
+  <p class="lead mb-5">Tech enthusiast, network administrator, and aspiring IT professional</p>
+
+  <div class="about-container">
+    <!-- Personal Info Section -->
+    <div class="about-section">
+      <h2 class="section-heading">
+        <i class="fas fa-user"></i> Personal Information
+      </h2>
+      <div class="info-card">
+        <p>
+          My name is <strong>Leon Kruspel</strong>. I was born on September 19, 2008, 
+          and I currently live in Klosterneuburg, Austria.
+        </p>
+        <p>
+          From a young age, I have been fascinated by electronics, starting with 
+          "Kosmos" experiment kits in kindergarten. Over time, my interest expanded 
+          to modern technology, networking, and server infrastructures.
+        </p>
+        <p>
+          In second grade at my private gymnasium, I started building my own websites; 
+          by the following year, I had initiated my private data center. 
+          Now, I'm focused on integrating a dedicated AI server into my home lab and 
+          learning advanced networking strategies.
+        </p>
+      </div>
+    </div>
+
+    <!-- Education Section -->
+    <div class="about-section">
+      <h2 class="section-heading">
+        <i class="fas fa-graduation-cap"></i> Education
+      </h2>
+      <div class="timeline-card">
+        <div class="education-item">
+          <span class="year-badge">2023 - Present</span>
+          <h3>HTBLuVA TGM, Vienna</h3>
+        </div>
+        <div class="education-item">
+          <span class="year-badge">2019 - 2023</span>
+          <h3>Private Gymnasium, Klosterneuburg</h3>
+        </div>
+        <div class="education-item">
+          <span class="year-badge">2015 - 2019</span>
+          <h3>VS Weidling, Klosterneuburg</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hobbies Section -->
+    <div class="about-section">
+      <h2 class="section-heading">
+        <i class="fas fa-heart"></i> Hobbies & Interests
+      </h2>
+      <div class="interests-grid">
+        <div class="interest-item" onclick="openInterestModal('servers')">
+          <i class="fas fa-server"></i>
+          <span>Server Administration</span>
+        </div>
+        <div class="interest-item" onclick="openInterestModal('network')">
+          <i class="fas fa-network-wired"></i>
+          <span>Network Infrastructure</span>
+        </div>
+        <div class="interest-item" onclick="openInterestModal('ai')">
+          <i class="fas fa-brain"></i>
+          <span>Artificial Intelligence</span>
+        </div>
+        <div class="interest-item" onclick="openInterestModal('programming')">
+          <i class="fas fa-code"></i>
+          <span>Programming</span>
+        </div>
+        <div class="interest-item" onclick="openInterestModal('building')">
+          <i class="fas fa-desktop"></i>
+          <span>Building PCs</span>
+        </div>
+        <div class="interest-item" onclick="openInterestModal('planning')">
+          <i class="fas fa-project-diagram"></i>
+          <span>Project Planning</span>
+        </div>
+        <div class="interest-item">
+          <i class="fas fa-walking"></i>
+          <span>Long Walks</span>
+        </div>
+        <div class="interest-item">
+          <i class="fas fa-atom"></i>
+          <span>Physics</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Social Links Section -->
+    <div class="about-section">
+      <h2 class="section-heading">
+        <i class="fas fa-link"></i> Find Me Online
+      </h2>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/leon-kruspel-8b1134268/" target="_blank" class="social-link">
+          <i class="fab fa-linkedin"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://www.instagram.com/leddis08/" target="_blank" class="social-link">
+          <i class="fab fa-instagram"></i>
+          <span>Instagram</span>
+        </a>
+        <a href="https://www.youtube.com/@leddis0810" target="_blank" class="social-link">
+          <i class="fab fa-youtube"></i>
+          <span>YouTube</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Interest Modals -->
+<div id="servers-modal" class="project-modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeInterestModal('servers')">&times;</span>
+    <h2>Server Administration</h2>
+    
+    <div class="project-gallery">
+      <div class="gallery-image-container">
+        <i class="fas fa-spinner fa-spin image-placeholder"></i>
+        <img src="img/Serverrack_front.jpg" 
+             alt="Server Rack Front" 
+             class="gallery-image loading"
+             onload="this.classList.remove('loading')">
+        <div class="image-caption">Professional Server Infrastructure</div>
+      </div>
+    </div>
+
+    <div class="project-details">
+      <h4>Experience & Projects</h4>
+      <ul>
+        <li>Managing 16 high-performance servers in a professional 42U IBM rack</li>
+        <li>Running multiple HP ProLiant and Dell PowerEdge systems</li>
+        <li>Operating a Proxmox cluster with 2 nodes and an 8-node computing cluster</li>
+        <li>Implementing redundant power distribution with Eaton UPS</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="network-modal" class="project-modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeInterestModal('network')">&times;</span>
+    <h2>Network Infrastructure</h2>
+    
+    <div class="project-details">
+      <h4>Experience & Projects</h4>
+      <ul>
+        <li>Complete home network setup with OPNSense and PFsense</li>
+        <li>Managing enterprise-grade switches including Topspin IBM InfiniBand</li>
+        <li>VPN infrastructure for school intranet project</li>
+        <li>Internal DNS server configuration for custom domains</li>
+        <li>Network monitoring and security implementation</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="ai-modal" class="project-modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeInterestModal('ai')">&times;</span>
+    <h2>Artificial Intelligence</h2>
+    
+    <div class="project-gallery">
+      <div class="gallery-image-container">
+        <i class="fas fa-spinner fa-spin image-placeholder"></i>
+        <img src="img/AI_Server_fanSide.jpg" 
+             alt="AI Server" 
+             class="gallery-image loading"
+             onload="this.classList.remove('loading')">
+        <div class="image-caption">AI Server Integration</div>
+      </div>
+    </div>
+
+    <div class="project-details">
+      <h4>Current Projects</h4>
+      <ul>
+        <li>Integration of dedicated AI server into existing infrastructure</li>
+        <li>GPU-accelerated machine learning workloads</li>
+        <li>Custom cooling solution for high-performance computing</li>
+        <li>Power management and monitoring systems</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="programming-modal" class="project-modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeInterestModal('programming')">&times;</span>
+    <h2>Programming Projects</h2>
+    
+    <div class="project-details">
+      <h4>School Forum Project</h4>
+      <ul>
+        <li>Developed a communication platform for teachers and students</li>
+        <li>Technologies: PHP, MySQL, HTML, CSS</li>
+        <li>GitHub integration for version control</li>
+        <li>User authentication and role management</li>
+      </ul>
+
+      <h4>ESP Emergency Brake</h4>
+      <ul>
+        <li>ESP32 microcontroller programming in C++</li>
+        <li>I2C display integration</li>
+        <li>Push notifications via Pushover API</li>
+        <li>Discord bot integration</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="building-modal" class="project-modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeInterestModal('building')">&times;</span>
+    <h2>PC Building & Hardware</h2>
+    
+    <div class="project-details">
+      <h4>Server Hardware Projects</h4>
+      <ul>
+        <li>Built and configured 16 server systems</li>
+        <li>HP ProLiant and Dell PowerEdge server maintenance</li>
+        <li>Custom cooling solutions implementation</li>
+        <li>Hardware RAID configuration</li>
+      </ul>
+
+      <h4>AI Server Build</h4>
+      <ul>
+        <li>Custom GPU server assembly</li>
+        <li>Cooling system design and implementation</li>
+        <li>Power distribution planning</li>
+        <li>Performance optimization</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="planning-modal" class="project-modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeInterestModal('planning')">&times;</span>
+    <h2>Project Planning</h2>
+    
+    <div class="project-details">
+      <h4>School Intranet Project</h4>
+      <ul>
+        <li>Infrastructure planning for multi-node Proxmox cluster</li>
+        <li>Service deployment strategy</li>
+        <li>VPN access management system</li>
+        <li>Resource allocation planning</li>
+      </ul>
+
+      <h4>Power Infrastructure</h4>
+      <ul>
+        <li>Eaton UPS integration planning</li>
+        <li>Power distribution design</li>
+        <li>Smart meter implementation</li>
+        <li>Redundancy planning</li>
+      </ul>
+    </div>
+  </div>
+</div>

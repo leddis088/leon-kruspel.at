@@ -1,0 +1,425 @@
+/* additional.css - Any extra overrides, animations, or special classes */
+
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+/* Navbar Styling */
+.navbar {
+    padding: 0.5rem 2rem;
+    height: 60px;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+.nav-link {
+    padding: 0.5rem 0.75rem;
+    margin: 0 0.25rem;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--bs-primary);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Theme Specific Styles */
+.light-theme {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --nav-bg: #ffffff;
+    --card-bg: #f8f9fa;
+}
+
+.dark-theme {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --nav-bg: #242424;
+    --card-bg: #2d2d2d;
+}
+
+body.dark-theme {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+body.dark-theme .navbar {
+    background-color: var(--nav-bg) !important;
+}
+
+body.dark-theme .nav-link,
+body.dark-theme .navbar-brand {
+    color: var(--text-color) !important;
+}
+
+/* Container Styling */
+.container {
+    max-width: 1200px;
+    padding: 1rem;
+}
+
+/* Adjust content spacing */
+#content {
+    margin-top: 70px !important;
+    padding-top: 1rem !important;
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Form Switch Styling */
+.form-switch {
+    padding-left: 2.5rem;
+}
+
+.form-switch .form-check-input {
+    width: 2.5rem;
+    margin-left: -2.5rem;
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+    padding: 0.5rem 1.5rem;
+    transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background-color: var(--bs-primary);
+    color: white;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* About Page Styling */
+.about-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-section {
+    margin-bottom: 3rem;
+}
+
+.section-heading {
+    font-size: 1.8rem;
+    color: var(--bs-primary);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.education-item {
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.education-item:last-child {
+    margin-bottom: 0;
+}
+
+.year-badge {
+    background-color: var(--bs-primary);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.interest-item {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.interest-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.interest-item i {
+    font-size: 2rem;
+    color: var(--bs-primary);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.interest-item::after {
+    display: none;
+}
+
+.interest-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(var(--bs-primary-rgb), 0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.interest-item:hover::before {
+    opacity: 1;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.social-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.social-link i {
+    font-size: 1.5rem;
+    color: var(--bs-primary);
+}
+
+/* Dark theme adjustments */
+body.dark-theme .info-card,
+body.dark-theme .timeline-card,
+body.dark-theme .interest-item,
+body.dark-theme .social-link {
+    background: var(--card-bg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .interests-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+    
+    .social-links {
+        flex-direction: column;
+    }
+    
+    .social-link {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Larger touch targets */
+    .nav-link, .dropdown-item {
+        padding: 0.8rem 1rem;
+        margin: 0.2rem 0;
+    }
+
+    /* Better modal handling */
+    .project-modal .modal-content {
+        width: 95%;
+        margin: 10px auto;
+        max-height: 90vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Improved gallery layout */
+    .project-gallery {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    /* Better touch feedback */
+    .project-item:active,
+    .interest-item:active,
+    .social-link:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+
+    /* Remove hover effects on touch devices */
+    .project-item:hover,
+    .interest-item:hover,
+    .social-link:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    /* Larger close buttons */
+    .close-modal,
+    .close-fullscreen {
+        padding: 15px;
+        font-size: 24px;
+    }
+}
+
+/* Touch-specific improvements */
+@media (hover: none) {
+    /* Persistent captions for better visibility */
+    .image-caption {
+        opacity: 1;
+        transform: none;
+        background: rgba(0, 0, 0, 0.7);
+    }
+
+    /* Better scroll handling */
+    .modal-content {
+        overscroll-behavior: contain;
+    }
+}
+
+/* Profile image styling */
+.profile-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .profile-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-image {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Mobile navigation improvements */
+@media screen and (max-width: 768px) {
+  .navbar-collapse {
+    background: var(--nav-bg);
+    padding: 1rem;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-nav {
+    gap: 0.5rem;
+  }
+
+  .nav-item {
+    width: 100%;
+    text-align: center;
+  }
+
+  .form-switch {
+    justify-content: center;
+  }
+
+  .dropdown-menu {
+    text-align: center;
+  }
+}
+
+/* Safari-specific fixes */
+@supports (-webkit-touch-callout: none) {
+  .project-item {
+    -webkit-transform: translateZ(0);
+  }
+  
+  .gallery-image-container {
+    -webkit-transform: translateZ(0);
+  }
+}
+
+.project-item {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.gallery-image-container {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    backface-visibility: hidden;
+}

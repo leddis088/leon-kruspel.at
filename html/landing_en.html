@@ -1,13 +1,104 @@
-<div class="mt-4">
-  <h1>Welcome to Leon Kruspel's Website</h1>
-  <p>
-    Hello, I'm Leon, a tech enthusiast with a keen interest in electronics, 
-    networking, and AI. Explore my projects, learn more about me, or get in touch!
-  </p>
-  <img src="img/leon.jpg" alt="Foto von Leon" class="img-fluid rounded" style="max-width: 300px;" />
-  <hr />
-  <p>
-    Currently working on integrating an AI server into my existing network. 
-    Check out the <a href="#projects" onclick="event.preventDefault(); navigateTo('projects'); return false;">Projects</a> section to see more!
-  </p>
+<div class="landing-container mt-4">
+  <!-- Hero Section -->
+  <div class="hero-section fade-in">
+    <div class="hero-content">
+      <div class="hero-image-wrapper">
+        <img src="img/leon.jpg" alt="Leon Kruspel" class="hero-image" />
+      </div>
+      <h1 class="hero-title">Welcome to Leon Kruspel's Website</h1>
+      <p class="lead">
+        Tech Enthusiast • Electronics • Networking • AI
+      </p>
+      <p class="hero-description">
+        Hello, I'm Leon, a passionate technology enthusiast with a deep interest in electronics, 
+        networking infrastructure, and artificial intelligence. I love building, learning, and 
+        pushing the boundaries of what's possible with technology.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" onclick="event.preventDefault(); navigateTo('projects'); return false;" class="cta-button">
+          <i class="fas fa-rocket"></i>
+          View My Projects
+        </a>
+        <a href="#about" onclick="event.preventDefault(); navigateTo('about'); return false;" class="cta-button cta-button-secondary">
+          <i class="fas fa-user"></i>
+          Learn More About Me
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Current Work Section -->
+  <div class="featured-section fade-in" style="animation-delay: 0.1s;">
+    <div class="section-heading">
+      <i class="fas fa-code"></i>
+      <span>Currently Working On</span>
+    </div>
+    <div class="current-work-card">
+      <div class="current-work-content">
+        <div class="status-badge ongoing">Ongoing</div>
+        <h3>AI Server Integration</h3>
+        <p>
+          Currently working on integrating a dedicated AI server into my existing network infrastructure. 
+          This project aims to support future machine learning workloads and AI-powered applications 
+          while maintaining optimal performance and reliability.
+        </p>
+        <a href="#projects" onclick="event.preventDefault(); navigateTo('projects'); return false;" class="learn-more-link">
+          Learn More <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+      <div class="current-work-visual">
+        <i class="fas fa-server"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Stats Section -->
+  <div class="stats-section fade-in" style="animation-delay: 0.2s;">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <i class="fas fa-project-diagram"></i>
+        <h3>10+</h3>
+        <p>Active Projects</p>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-server"></i>
+        <h3>8</h3>
+        <p>Servers Managed</p>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-network-wired"></i>
+        <h3>5+</h3>
+        <p>Years Experience</p>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-code-branch"></i>
+        <h3>3+</h3>
+        <p>Years Coding</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Links Section -->
+  <div class="quick-links-section fade-in" style="animation-delay: 0.3s;">
+    <div class="section-heading">
+      <i class="fas fa-compass"></i>
+      <span>Explore</span>
+    </div>
+    <div class="quick-links-grid">
+      <a href="#projects" onclick="event.preventDefault(); navigateTo('projects'); return false;" class="quick-link-card">
+        <div class="quick-link-icon">
+          <i class="fas fa-briefcase"></i>
+        </div>
+        <h4>Projects</h4>
+        <p>Explore my technical projects and achievements</p>
+      </a>
+      <a href="#about" onclick="event.preventDefault(); navigateTo('about'); return false;" class="quick-link-card">
+        <div class="quick-link-icon">
+          <i class="fas fa-info-circle"></i>
+        </div>
+        <h4>About</h4>
+        <p>Learn more about my background and interests</p>
+      </a>
+    </div>
+  </div>
 </div>

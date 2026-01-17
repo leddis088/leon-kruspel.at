@@ -31,6 +31,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/index.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/landing.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="css/project.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="css/additional.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="css/cookie-notice.css" media="print" onload="this.media='all'">
@@ -84,7 +85,7 @@
   <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-light bg-light shadow-sm fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#landing" onclick="event.preventDefault(); navigateTo('landing'); return false;">
-        Leon Kruspel
+        <span class="brand-text">Leon Kruspel</span>
       </a>
       <button
         class="navbar-toggler"
@@ -99,50 +100,70 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
           <!-- Projects Page Link -->
           <li class="nav-item">
-            <a class="nav-link" href="#projects" onclick="event.preventDefault(); navigateTo('projects'); return false;" data-i18n="navProjects">Projects</a>
+            <a class="nav-link" href="#projects" onclick="event.preventDefault(); navigateTo('projects'); return false;" data-i18n="navProjects">
+              <i class="fas fa-briefcase me-1"></i>
+              <span>Projects</span>
+            </a>
           </li>
           <!-- About Page Link -->
           <li class="nav-item">
-            <a class="nav-link" href="#about" onclick="event.preventDefault(); navigateTo('about'); return false;" data-i18n="navAbout">About</a>
+            <a class="nav-link" href="#about" onclick="event.preventDefault(); navigateTo('about'); return false;" data-i18n="navAbout">
+              <i class="fas fa-user me-1"></i>
+              <span>About</span>
+            </a>
           </li>
           <!-- Imprint Page Link -->
           <li class="nav-item">
-            <a class="nav-link" href="#imprint" onclick="event.preventDefault(); navigateTo('imprint'); return false;" data-i18n="navImprint">Imprint</a>
+            <a class="nav-link" href="#imprint" onclick="event.preventDefault(); navigateTo('imprint'); return false;" data-i18n="navImprint">
+              <i class="fas fa-file-alt me-1"></i>
+              <span>Imprint</span>
+            </a>
           </li>
 
+          <!-- Divider -->
+          <li class="nav-item navbar-divider"></li>
+
           <!-- Dark/Light Mode Toggle -->
-          <li class="nav-item d-flex align-items-center px-2">
-            <div class="form-check form-switch">
+          <li class="nav-item d-flex align-items-center">
+            <div class="theme-toggle-wrapper">
               <input
-                class="form-check-input"
+                class="form-check-input theme-switch"
                 type="checkbox"
                 id="themeSwitch"
                 onclick="toggleTheme()"
               />
-              <label
-                class="form-check-label"
-                for="themeSwitch"
-                data-i18n="toggleDarkMode"
-              >
-                Dark Mode
+              <label class="theme-toggle-label" for="themeSwitch">
+                <i class="fas fa-moon"></i>
+                <span class="theme-toggle-text" data-i18n="toggleDarkMode">Dark Mode</span>
               </label>
             </div>
           </li>
 
           <!-- Language Toggle -->
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="language">
-              Language
+            <a class="nav-link language-toggle dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-globe me-1"></i>
+              <span data-i18n="language">Language</span>
+              <i class="fas fa-chevron-down ms-1 dropdown-icon"></i>
             </a>
-            <ul class="dropdown-menu dropdown-menu-end">
+            <ul class="dropdown-menu dropdown-menu-end language-menu">
               <li>
-                <a class="dropdown-item" href="#" onclick="setLanguage('en'); return false;">English</a>
+                <a class="dropdown-item language-option" data-lang="en" href="#" onclick="event.preventDefault(); setLanguage('en'); return false;">
+                  <i class="fas fa-check me-2 language-check"></i>
+                  <span>English</span>
+                  <span class="language-flag ms-auto">🇬🇧</span>
+                </a>
               </li>
+              <li><hr class="dropdown-divider"></li>
               <li>
-                <a class="dropdown-item" href="#" onclick="setLanguage('de'); return false;">Deutsch</a>
+                <a class="dropdown-item language-option" data-lang="de" href="#" onclick="event.preventDefault(); setLanguage('de'); return false;">
+                  <i class="fas fa-check me-2 language-check"></i>
+                  <span>Deutsch</span>
+                  <span class="language-flag ms-auto">🇩🇪</span>
+                </a>
               </li>
             </ul>
           </li>

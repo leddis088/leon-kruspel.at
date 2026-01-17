@@ -27,6 +27,64 @@ function getCookie(name) {
   return "";
 }
 
+// Translation object for navbar and UI elements
+const translations = {
+  en: {
+    navProjects: 'Projects',
+    navAbout: 'About',
+    navImprint: 'Imprint',
+    toggleDarkMode: 'Dark Mode',
+    language: 'Language',
+    toggleNavigation: 'Toggle navigation'
+  },
+  de: {
+    navProjects: 'Projekte',
+    navAbout: 'Über mich',
+    navImprint: 'Impressum',
+    toggleDarkMode: 'Dunkler Modus',
+    language: 'Sprache',
+    toggleNavigation: 'Navigation umschalten'
+  }
+};
+
+// Function to update navbar translations
+function updateNavbarLanguage(lang) {
+  const langData = translations[lang] || translations.en;
+  
+  // Set body data attribute for CSS targeting
+  document.body.setAttribute('data-lang', lang);
+  
+  // Update all elements with data-i18n attributes
+  document.querySelectorAll('[data-i18n]').forEach(element => {
+    const key = element.getAttribute('data-i18n');
+    if (langData[key]) {
+      // Only update text content, preserve icon elements
+      const textSpan = element.querySelector('span');
+      if (textSpan) {
+        textSpan.textContent = langData[key];
+      } else {
+        element.textContent = langData[key];
+      }
+    }
+  });
+  
+  // Update aria-label for toggle button
+  const toggleButton = document.querySelector('[data-bs-toggle="collapse"]');
+  if (toggleButton && langData.toggleNavigation) {
+    toggleButton.setAttribute('aria-label', langData.toggleNavigation);
+  }
+  
+  // Update active language indicator in dropdown
+  document.querySelectorAll('.language-option').forEach(item => {
+    const itemLang = item.getAttribute('data-lang');
+    if (itemLang === lang) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active');
+    }
+  });
+}
+
 /*
   setLanguage is defined here so other scripts (like index.js) can call it too.
   If reloadPage is true, it calls navigateTo("landing") to refresh content in new lang.
@@ -34,6 +92,10 @@ function getCookie(name) {
 function setLanguage(lang, reloadPage = true) {
   currentLanguage = lang;
   setCookie("lang", lang, 365);
+  
+  // Update navbar language immediately
+  updateNavbarLanguage(lang);
+  
   if (reloadPage) {
     navigateTo(currentPage); // Use tracked page instead of defaulting to landing
   }
@@ -113,6 +175,10 @@ function initSite() {
     } else {
         setLanguage("en", false);
     }
+    
+    // Update navbar language on initial load
+    const currentLang = getCookie("lang") || "en";
+    updateNavbarLanguage(currentLang);
 
     // Determine which page to load
     const hash = window.location.hash.slice(1);

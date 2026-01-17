@@ -68,10 +68,33 @@ function openFullScreenImage(imageSrc) {
     };
 }
 
-// Add click handlers to gallery images
-document.querySelectorAll('.gallery-image').forEach(img => {
-    img.onclick = () => openFullScreenImage(img.src);
-});
+// Add click handlers to gallery images (this runs on initial page load)
+// Note: After content is loaded via AJAX, initializeImageHandlers() in main.js will handle this
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeProjectImageHandlers();
+    });
+} else {
+    initializeProjectImageHandlers();
+}
+
+function initializeProjectImageHandlers() {
+    document.querySelectorAll('.gallery-image').forEach(img => {
+        // Only add handler if it doesn't already have one
+        if (!img.hasAttribute('data-handler-added')) {
+            img.setAttribute('data-handler-added', 'true');
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (typeof window.openFullScreenImage === 'function') {
+                    window.openFullScreenImage(this.src);
+                } else if (typeof openFullScreenImage === 'function') {
+                    openFullScreenImage(this.src);
+                }
+            });
+        }
+    });
+}
 
 // Add these functions to your existing project.js
 

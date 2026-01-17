@@ -1,4 +1,14 @@
+// getCurrentLanguage is now defined in main.js
+// Use global function if available, otherwise fallback
 function getCurrentLanguage() {
+    if (typeof window.getCurrentLanguage === 'function') {
+        return window.getCurrentLanguage();
+    }
+    // Fallback: check cookie first, then localStorage
+    const langFromCookie = document.cookie.split('; ').find(row => row.startsWith('lang='));
+    if (langFromCookie) {
+        return langFromCookie.split('=')[1] || 'en';
+    }
     return localStorage.getItem('language') || 'en';
 }
 

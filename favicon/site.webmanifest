@@ -3,7 +3,7 @@
     "short_name": "LK",
     "icons": [
         {
-            "src": "/favicon/favicon.png",
+            "src": "/favicon/leon_logo.png",
             "sizes": "512x512",
             "type": "image/png"
         }

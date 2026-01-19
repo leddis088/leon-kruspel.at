@@ -74,8 +74,8 @@ function updateNavbarLanguage(lang) {
     toggleButton.setAttribute('aria-label', langData.toggleNavigation);
   }
   
-  // Update active language indicator in dropdown
-  document.querySelectorAll('.language-option').forEach(item => {
+  // Update active language indicator in dropdown (old and new structure)
+  document.querySelectorAll('.language-option, .settings-language-option').forEach(item => {
     const itemLang = item.getAttribute('data-lang');
     if (itemLang === lang) {
       item.classList.add('active');
@@ -191,6 +191,9 @@ function initSite() {
     
     currentPage = pageToLoad;
     
+    // Scroll to top on page load
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    
     // Navigate to the current page
     // Functions are hoisted, so navigateTo should be available
     // Use a small delay to ensure everything is initialized
@@ -209,6 +212,8 @@ function initSite() {
                     .then(response => response.text())
                     .then(html => {
                         contentDiv.innerHTML = html;
+                        // Ensure scroll to top after content loads
+                        window.scrollTo({ top: 0, behavior: 'instant' });
                     })
                     .catch(err => {
                         console.error('Failed to load landing page:', err);

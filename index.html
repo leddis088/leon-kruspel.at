@@ -49,6 +49,15 @@
   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   <!-- Scripts -->
+  <script>
+    // Ensure page starts at top on load
+    window.addEventListener('DOMContentLoaded', function() {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    });
+    window.addEventListener('load', function() {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    });
+  </script>
   <script src="js/main.js" defer></script>
   <script src="js/navigation.js" defer></script>
   <script src="js/cookie-notice.js" defer></script>
@@ -96,7 +105,9 @@
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon">
+          <span></span>
+        </span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -123,47 +134,50 @@
             </a>
           </li>
 
-          <!-- Divider -->
-          <li class="nav-item navbar-divider"></li>
-
-          <!-- Dark/Light Mode Toggle -->
-          <li class="nav-item d-flex align-items-center">
-            <div class="theme-toggle-wrapper">
-              <input
-                class="form-check-input theme-switch"
-                type="checkbox"
-                id="themeSwitch"
-                onclick="toggleTheme()"
-              />
-              <label class="theme-toggle-label" for="themeSwitch">
-                <i class="fas fa-moon"></i>
-                <span class="theme-toggle-text" data-i18n="toggleDarkMode">Dark Mode</span>
-              </label>
-            </div>
-          </li>
-
-          <!-- Language Toggle -->
-          <li class="nav-item dropdown">
-            <a class="nav-link language-toggle dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fas fa-globe me-1"></i>
-              <span data-i18n="language">Language</span>
-              <i class="fas fa-chevron-down ms-1 dropdown-icon"></i>
+          <!-- Settings Menu (Dark Mode + Language) -->
+          <li class="nav-item dropdown settings-menu">
+            <a class="nav-link settings-toggle dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" title="Settings">
+              <i class="fas fa-cog"></i>
             </a>
-            <ul class="dropdown-menu dropdown-menu-end language-menu">
-              <li>
-                <a class="dropdown-item language-option" data-lang="en" href="#" onclick="event.preventDefault(); setLanguage('en'); return false;">
-                  <i class="fas fa-check me-2 language-check"></i>
-                  <span>English</span>
-                  <span class="language-flag ms-auto">🇬🇧</span>
-                </a>
+            <ul class="dropdown-menu dropdown-menu-end settings-dropdown">
+              <!-- Dark Mode Toggle -->
+              <li class="settings-item">
+                <div class="settings-option">
+                  <div class="settings-option-content">
+                    <i class="fas fa-moon settings-icon"></i>
+                    <span class="settings-label" data-i18n="toggleDarkMode">Dark Mode</span>
+                  </div>
+                  <div class="form-check form-switch settings-switch">
+                    <input
+                      class="form-check-input theme-switch"
+                      type="checkbox"
+                      id="themeSwitch"
+                      onclick="toggleTheme()"
+                    />
+                  </div>
+                </div>
               </li>
+              
               <li><hr class="dropdown-divider"></li>
-              <li>
-                <a class="dropdown-item language-option" data-lang="de" href="#" onclick="event.preventDefault(); setLanguage('de'); return false;">
-                  <i class="fas fa-check me-2 language-check"></i>
-                  <span>Deutsch</span>
-                  <span class="language-flag ms-auto">🇩🇪</span>
-                </a>
+              
+              <!-- Language Selector -->
+              <li class="settings-item">
+                <div class="settings-option-header">
+                  <i class="fas fa-globe settings-icon"></i>
+                  <span class="settings-label" data-i18n="language">Language</span>
+                </div>
+                <div class="settings-language-options">
+                  <a class="settings-language-option" data-lang="en" href="#" onclick="event.preventDefault(); setLanguage('en'); return false;">
+                    <span class="language-flag">🇬🇧</span>
+                    <span>English</span>
+                    <i class="fas fa-check language-check"></i>
+                  </a>
+                  <a class="settings-language-option" data-lang="de" href="#" onclick="event.preventDefault(); setLanguage('de'); return false;">
+                    <span class="language-flag">🇩🇪</span>
+                    <span>Deutsch</span>
+                    <i class="fas fa-check language-check"></i>
+                  </a>
+                </div>
               </li>
             </ul>
           </li>

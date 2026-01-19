@@ -15,6 +15,21 @@ body.dark-theme {
 /* Smooth transitions for color changes */
 body {
   transition: background-color 0.3s ease, color 0.3s ease;
+  padding-top: 120px; /* Space for fixed navbar */
+}
+
+/* Add padding to content container */
+#content {
+  padding-top: 2rem !important;
+  margin-top: 0 !important;
+}
+
+/* Override Bootstrap mt-4 class on page content */
+#content > .mt-4,
+#content > div.mt-4,
+#content .landing-container.mt-4 {
+  margin-top: 0 !important;
+  padding-top: 2rem !important;
 }
 
 /* Navbar overrides for dark theme */

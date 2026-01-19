@@ -420,26 +420,6 @@ function checkBrowserSupport() {
   }
 }
 
-function acceptCookies() {
-    localStorage.setItem('cookieConsent', 'true');
-    const cookieNotice = document.querySelector('.cookie-notice');
-    if (cookieNotice) {
-        cookieNotice.remove();
-    }
-}
-
-function rejectCookies() {
-    // Clear all cookies
-    document.cookie.split(";").forEach(function(c) {
-        document.cookie = c.replace(/^ +/, "")
-            .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
-    });
-    // Clear localStorage except for essential items
-    localStorage.clear();
-    // Reload page
-    window.location.reload();
-}
-
 // Handle browser back/forward buttons
 window.addEventListener('popstate', function() {
     const page = window.location.hash.slice(1) || 'landing';
@@ -520,37 +500,95 @@ if (typeof window.openFullScreenImage === 'undefined') {
                 <img src="${imageSrc}" alt="Full-size image">
             </div>
         `;
-        
+
         document.body.appendChild(fullScreenModal);
         document.body.style.overflow = 'hidden';
-        
-        // Close on click outside
-        fullScreenModal.addEventListener('click', function(e) {
-            if (e.target === fullScreenModal) {
+
+        // Shrink navbar when modal opens
+        const navbar = document.getElementById('mainNavbar');
+        if (navbar) {
+            navbar.classList.add('navbar-scrolled');
+        }
+
+        const closeFullscreen = function() {
+            if (document.body.contains(fullScreenModal)) {
                 document.body.removeChild(fullScreenModal);
                 document.body.style.overflow = 'auto';
+                // Restore navbar state based on scroll position
+                handleNavbarScroll();
+            }
+        };
+
+        // Close on click outside (anywhere except the image itself)
+        fullScreenModal.addEventListener('click', function(e) {
+            // Close if clicked on the modal background or anywhere that's not the image
+            if (e.target === fullScreenModal || e.target.classList.contains('fullscreen-content')) {
+                closeFullscreen();
             }
         });
-        
+
         // Close on close button click
         const closeBtn = fullScreenModal.querySelector('.close-fullscreen');
         if (closeBtn) {
-            closeBtn.addEventListener('click', function() {
-                document.body.removeChild(fullScreenModal);
-                document.body.style.overflow = 'auto';
+            closeBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                closeFullscreen();
             });
         }
-        
+
         // Close on Escape key
         const escapeHandler = function(e) {
             if (e.key === 'Escape') {
-                if (document.body.contains(fullScreenModal)) {
-                    document.body.removeChild(fullScreenModal);
-                    document.body.style.overflow = 'auto';
-                    document.removeEventListener('keydown', escapeHandler);
-                }
+                closeFullscreen();
+                document.removeEventListener('keydown', escapeHandler);
             }
         };
         document.addEventListener('keydown', escapeHandler);
     };
 }
+
+// Dynamic navbar shrink on scroll
+function handleNavbarScroll() {
+    const navbar = document.getElementById('mainNavbar');
+    if (!navbar) return;
+
+    if (window.scrollY > 50) {
+        navbar.classList.add('navbar-scrolled');
+    } else {
+        navbar.classList.remove('navbar-scrolled');
+    }
+}
+
+// Add scroll event listener
+window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+
+// Check for Bootstrap modals and shrink navbar when they open
+document.addEventListener('DOMContentLoaded', function() {
+    // Monitor for Bootstrap modals
+    const observeModals = function() {
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => {
+            modal.addEventListener('show.bs.modal', function() {
+                const navbar = document.getElementById('mainNavbar');
+                if (navbar) {
+                    navbar.classList.add('navbar-scrolled');
+                }
+            });
+
+            modal.addEventListener('hidden.bs.modal', function() {
+                // Restore navbar state based on scroll position
+                handleNavbarScroll();
+            });
+        });
+    };
+
+    // Initial observation
+    observeModals();
+
+    // Re-observe when content changes (after navigateTo)
+    const contentDiv = document.getElementById('content');
+    if (contentDiv) {
+        const observer = new MutationObserver(observeModals);
+        observer.observe(contentDiv, { childList: true, subtree: true });
+    }
+});

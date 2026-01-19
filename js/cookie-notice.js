@@ -1,22 +1,29 @@
-// getCurrentLanguage is now defined in main.js
-// Use global function if available, otherwise fallback
-function getCurrentLanguage() {
-    if (typeof window.getCurrentLanguage === 'function') {
-        return window.getCurrentLanguage();
+// Get current language for cookie notice - local function
+function getCookieNoticeLanguage() {
+    // Try to get language from cookie first
+    const cookies = document.cookie.split('; ');
+    for (let cookie of cookies) {
+        if (cookie.startsWith('lang=')) {
+            return cookie.split('=')[1] || 'en';
+        }
     }
-    // Fallback: check cookie first, then localStorage
-    const langFromCookie = document.cookie.split('; ').find(row => row.startsWith('lang='));
-    if (langFromCookie) {
-        return langFromCookie.split('=')[1] || 'en';
+    // Then check localStorage
+    const storedLang = localStorage.getItem('language');
+    if (storedLang) {
+        return storedLang;
     }
-    return localStorage.getItem('language') || 'en';
+    // Default to English
+    return 'en';
 }
 
 function showCookieNotice() {
+    console.log('Checking cookie consent...', localStorage.getItem('cookieConsent'));
+
     if (!localStorage.getItem('cookieConsent')) {
-        const language = getCurrentLanguage();
+        console.log('No cookie consent found, showing notice...');
+        const language = getCookieNoticeLanguage();
         const content = getCookieNoticeContent(language);
-        
+
         const cookieNotice = document.createElement('div');
         cookieNotice.className = 'cookie-notice';
         cookieNotice.innerHTML = `
@@ -25,7 +32,7 @@ function showCookieNotice() {
                 <p>${content.description}</p>
                 <h4>${content.essentialTitle}</h4>
                 <ul>
-                    ${Object.entries(content.cookies).map(([key, value]) => 
+                    ${Object.entries(content.cookies).map(([key, value]) =>
                         `<li><strong>${key}</strong>: ${value}</li>`
                     ).join('')}
                 </ul>
@@ -38,24 +45,81 @@ function showCookieNotice() {
                 </div>
             </div>
         `;
-        
+
         document.body.appendChild(cookieNotice);
+        console.log('Cookie notice added to page');
+    } else {
+        console.log('Cookie consent already given:', localStorage.getItem('cookieConsent'));
     }
 }
 
-function acceptCookies() {
+// Make functions globally available
+window.acceptCookies = function acceptCookies() {
+    console.log('Cookies accepted');
     localStorage.setItem('cookieConsent', 'accepted');
-    document.querySelector('.cookie-notice').remove();
-}
+    const notice = document.querySelector('.cookie-notice');
+    if (notice) {
+        notice.remove();
+    }
+};
 
-function rejectCookies() {
+window.rejectCookies = function rejectCookies() {
+    console.log('Cookies rejected');
+
+    // First, clear all existing cookies except the rejection cookie
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
+        const eqPos = cookie.indexOf('=');
+        const name = eqPos > -1 ? cookie.substr(0, eqPos).trim() : cookie.trim();
+        if (name !== 'cookieConsent') {
+            document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
+        }
+    }
+
+    // Set the rejection cookie (store rejection state)
+    const d = new Date();
+    d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000)); // 1 year
+    const expires = "expires=" + d.toUTCString();
+    document.cookie = `cookieConsent=rejected; ${expires}; path=/; SameSite=Lax`;
+
+    // Also set in localStorage as backup
     localStorage.setItem('cookieConsent', 'rejected');
-    document.querySelector('.cookie-notice').remove();
-    // Optionally redirect to a cookie-free version or show limited functionality message
-}
+
+    const notice = document.querySelector('.cookie-notice');
+    if (notice) {
+        notice.remove();
+    }
+};
 
 // Show the notice when the page loads
-document.addEventListener('DOMContentLoaded', showCookieNotice);
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOMContentLoaded fired in cookie-notice.js');
+    // Small delay to ensure DOM is fully ready
+    setTimeout(function() {
+        showCookieNotice();
+    }, 100);
+});
+
+// Also try on window load as backup
+window.addEventListener('load', function() {
+    console.log('Window load fired in cookie-notice.js');
+    // Only show if not already shown
+    setTimeout(function() {
+        if (!document.querySelector('.cookie-notice') && !localStorage.getItem('cookieConsent')) {
+            console.log('Showing cookie notice from window.load');
+            showCookieNotice();
+        }
+    }, 200);
+});
+
+// Emergency fallback - check after 1 second
+setTimeout(function() {
+    if (!document.querySelector('.cookie-notice') && !localStorage.getItem('cookieConsent')) {
+        console.log('Emergency fallback: showing cookie notice');
+        showCookieNotice();
+    }
+}, 1000);
 
 // Add this function to get the correct content based on language
 function getCookieNoticeContent(language) {

@@ -10,6 +10,12 @@ function openProjectModal(projectId) {
     const modal = document.getElementById(`${projectId}-modal`);
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+
+    // Shrink navbar when modal opens
+    const navbar = document.getElementById('mainNavbar');
+    if (navbar) {
+        navbar.classList.add('navbar-scrolled');
+    }
 }
 
 function closeProjectModal(projectId) {
@@ -17,6 +23,11 @@ function closeProjectModal(projectId) {
     if (modal) {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
+
+        // Restore navbar state based on scroll position
+        if (typeof handleNavbarScroll === 'function') {
+            handleNavbarScroll();
+        }
     }
 }
 
@@ -25,6 +36,11 @@ window.onclick = function(event) {
     if (event.target.classList.contains('project-modal')) {
         event.target.style.display = 'none';
         document.body.style.overflow = 'auto';
+
+        // Restore navbar state based on scroll position
+        if (typeof handleNavbarScroll === 'function') {
+            handleNavbarScroll();
+        }
     }
 }
 
@@ -58,14 +74,52 @@ function openFullScreenImage(imageSrc) {
             <img src="${imageSrc}" alt="Full-size image">
         </div>
     `;
-    
+
     document.body.appendChild(fullScreenModal);
     document.body.style.overflow = 'hidden';
 
-    fullScreenModal.querySelector('.close-fullscreen').onclick = () => {
-        document.body.removeChild(fullScreenModal);
-        document.body.style.overflow = 'auto';
+    // Shrink navbar when modal opens
+    const navbar = document.getElementById('mainNavbar');
+    if (navbar) {
+        navbar.classList.add('navbar-scrolled');
+    }
+
+    const closeFullscreen = function() {
+        if (document.body.contains(fullScreenModal)) {
+            document.body.removeChild(fullScreenModal);
+            document.body.style.overflow = 'auto';
+            // Restore navbar state based on scroll position
+            if (typeof handleNavbarScroll === 'function') {
+                handleNavbarScroll();
+            }
+        }
     };
+
+    // Close on click outside (anywhere except the image itself)
+    fullScreenModal.addEventListener('click', function(e) {
+        // Close if clicked on the modal background or anywhere that's not the image
+        if (e.target === fullScreenModal || e.target.classList.contains('fullscreen-content')) {
+            closeFullscreen();
+        }
+    });
+
+    // Close on close button click
+    const closeBtn = fullScreenModal.querySelector('.close-fullscreen');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            closeFullscreen();
+        });
+    }
+
+    // Close on Escape key
+    const escapeHandler = function(e) {
+        if (e.key === 'Escape') {
+            closeFullscreen();
+            document.removeEventListener('keydown', escapeHandler);
+        }
+    };
+    document.addEventListener('keydown', escapeHandler);
 }
 
 // Add click handlers to gallery images (this runs on initial page load)
@@ -103,6 +157,12 @@ function openInterestModal(interestId) {
     if (modal) {
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
+
+        // Shrink navbar when modal opens
+        const navbar = document.getElementById('mainNavbar');
+        if (navbar) {
+            navbar.classList.add('navbar-scrolled');
+        }
     }
 }
 
@@ -111,6 +171,11 @@ function closeInterestModal(interestId) {
     if (modal) {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
+
+        // Restore navbar state based on scroll position
+        if (typeof handleNavbarScroll === 'function') {
+            handleNavbarScroll();
+        }
     }
 }
 
@@ -148,7 +213,7 @@ document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape' && !event.repeat) {
         const openModals = Array.from(document.querySelectorAll('.project-modal, .fullscreen-modal'))
             .filter(modal => modal.style.display === 'block' || modal.style.display === 'flex');
-            
+
         if (openModals.length > 0) {
             event.preventDefault(); // Prevent browser minimize
             openModals.forEach(modal => {
@@ -159,6 +224,11 @@ document.addEventListener('keydown', function(event) {
                 }
             });
             document.body.style.overflow = 'auto';
+
+            // Restore navbar state based on scroll position
+            if (typeof handleNavbarScroll === 'function') {
+                handleNavbarScroll();
+            }
         }
     }
 });
@@ -168,6 +238,11 @@ function closeFullScreenImage() {
     if (fullscreenModal) {
         fullscreenModal.remove();
         document.body.style.overflow = 'auto';
+
+        // Restore navbar state based on scroll position
+        if (typeof handleNavbarScroll === 'function') {
+            handleNavbarScroll();
+        }
     }
 }
 

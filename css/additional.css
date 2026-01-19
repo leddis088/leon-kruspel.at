@@ -152,7 +152,12 @@ body.dark-theme .navbar {
     transform: translateX(-50%);
     background: linear-gradient(90deg, var(--bs-primary), rgba(var(--bs-primary-rgb), 0.8));
     border-radius: 2px;
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), bottom 0.3s ease;
+}
+
+#mainNavbar.navbar-scrolled .nav-link::after {
+    bottom: 0.2rem;
+    height: 2px;
 }
 
 .nav-link:hover {
@@ -633,9 +638,9 @@ body.dark-theme .navbar-brand {
 
 /* Adjust content spacing */
 #content {
-    margin-top: 80px !important;
-    padding-top: 1rem !important;
-    scroll-margin-top: 80px;
+    margin-top: 2rem !important;
+    padding-top: 2rem !important;
+    scroll-margin-top: 120px;
 }
 
 /* Animations */

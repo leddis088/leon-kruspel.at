@@ -19,11 +19,19 @@ class ErrorHandler {
             error: error || new Error('Unknown error')
         };
 
-        // Log error details
-        console.error('Error Details:', errorDetails);
+        // Log detailed error information
+        console.group('🔴 Error Detected');
+        console.error('Message:', errorDetails.message);
+        console.error('Source:', errorDetails.url);
+        console.error('Line:', errorDetails.lineNo, 'Column:', errorDetails.columnNo);
+        if (error && error.stack) {
+            console.error('Stack trace:', error.stack);
+        }
+        console.groupEnd();
 
-        // Show user-friendly error message if needed
-        this.showUserError(errorDetails.message);
+        // Show user-friendly error message with details
+        const fullErrorMsg = `${errorDetails.message} (at ${errorDetails.url}:${errorDetails.lineNo}:${errorDetails.columnNo})`;
+        this.showUserError(fullErrorMsg);
         return false;
     }
 
@@ -32,7 +40,18 @@ class ErrorHandler {
             event.preventDefault();
             return;
         }
-        console.error('Promise Rejection:', event.reason);
+
+        // Log detailed promise rejection information
+        console.group('🔴 Promise Rejection');
+        console.error('Reason:', event.reason);
+        if (event.reason?.stack) {
+            console.error('Stack trace:', event.reason.stack);
+        }
+        console.groupEnd();
+
+        // Show error to user
+        const errorMsg = event.reason?.message || String(event.reason) || 'Promise rejection';
+        this.showUserError(`Promise Error: ${errorMsg}`);
     }
 
     static handleCSPViolation(event) {
@@ -108,15 +127,23 @@ class ErrorHandler {
         // Don't show error if getUserFriendlyMessage returned null
         const userMsg = this.getUserFriendlyMessage(msg);
         if (!userMsg) return;
-        
-        const errorContainer = document.getElementById('error-container') || 
+
+        const errorContainer = document.getElementById('error-container') ||
             this.createErrorContainer();
-        
+
         const errorMsg = document.createElement('div');
         errorMsg.className = 'error-message fade-out';
-        errorMsg.textContent = userMsg;
-        
+
+        // Show both user-friendly message and technical details
+        const technicalDetails = String(msg || 'Unknown error');
+        errorMsg.innerHTML = `
+            <div style="font-weight: bold; margin-bottom: 0.5rem;">${userMsg}</div>
+            <div style="font-size: 0.85rem; opacity: 0.8; font-family: monospace;">
+                Technical: ${technicalDetails}
+            </div>
+        `;
+
         errorContainer.appendChild(errorMsg);
-        setTimeout(() => errorMsg.remove(), 5000);
+        setTimeout(() => errorMsg.remove(), 8000);
     }
 } 
